@@ -70,6 +70,7 @@
 }
 .error-text {
   display: none;
+  font-size: 14px;
 }
 .error-form {
   .age-label {
@@ -159,6 +160,9 @@
     bottom: -32px;
     left: 50%;
     margin-left: -32px;
+    &:hover {
+      background-color: $purple;
+    }
     img {
       width: 25px;
       height: auto;

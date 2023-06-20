@@ -74,6 +74,7 @@
 
 .error-text {
   display: none;
+  font-size: 14px;
 }
 
 .error-form .age-label {
@@ -165,6 +166,9 @@
     bottom: -32px;
     left: 50%;
     margin-left: -32px;
+  }
+  .submit-btn:hover {
+    background-color: hsl(259, 100%, 65%);
   }
   .submit-btn img {
     width: 25px;
