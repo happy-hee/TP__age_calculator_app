@@ -29,8 +29,10 @@
               id="day"
               placeholder="DD"
               maxlength="2" />
-            <div class="error-text">This field is required</div>
-            <div class="error-text">Must be a valid day</div>
+            <div class="error-text error-text--empty">
+              This field is required
+            </div>
+            <div class="error-text error-text--day">Must be a valid day</div>
           </div>
           <!-- Month -->
           <div class="form">
@@ -41,8 +43,12 @@
               id="month"
               placeholder="MM"
               maxlength="2" />
-            <div class="error-text">This field is required</div>
-            <div class="error-text">Must be a valid month</div>
+            <div class="error-text error-text--empty">
+              This field is required
+            </div>
+            <div class="error-text error-text--month">
+              Must be a valid month
+            </div>
           </div>
           <!-- Year -->
           <div class="form">
@@ -53,8 +59,10 @@
               id="year"
               placeholder="YYYY"
               maxlength="4" />
-            <div class="error-text">This field is required</div>
-            <div class="error-text">Must be in the past</div>
+            <div class="error-text error-text--empty">
+              This field is required
+            </div>
+            <div class="error-text error-text--year">Must be in the past</div>
           </div>
           <button class="submit-btn" id="submitBtn">
             <img src="./assets/images/icon-arrow.svg" alt="확인하기" />
@@ -82,5 +90,8 @@
         >. Coded by Happy-hee.
       </div>
     </div>
+
+    <!-- Script -->
+    <script src="./js/script.js"></script>
   </body>
 </html>

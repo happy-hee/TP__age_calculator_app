@@ -75,28 +75,28 @@
   display: none;
 }
 
-.form-error .age-label {
+.error-form .age-label {
   color: hsl(0, 100%, 67%);
 }
-.form-error input {
+.error-form input {
   border-color: hsl(0, 100%, 67%);
 }
-.form-error .error-text {
+.error-form .error-text {
   font-weight: 400;
   font-style: italic;
   margin-top: 10px;
   color: hsl(0, 100%, 67%);
 }
-.form-error .error-text--day.dp-block {
+.error-form .error-text--day.dp-block {
   display: block;
 }
-.form-error .error-text--month.dp-block {
+.error-form .error-text--month.dp-block {
   display: block;
 }
-.form-error .error-text--year.dp-block {
+.error-form .error-text--year.dp-block {
   display: block;
 }
-.form-error--empty .error-text--empty {
+.error-form .error-text--empty.dp-block {
   display: block;
 }
 

@@ -70,6 +70,32 @@
 .error-text {
   display: none;
 }
+.error-form {
+  .age-label {
+    color: $light-red;
+  }
+  input {
+    border-color: $light-red;
+  }
+  .error-text {
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 10px;
+    color: $light-red;
+    &--day.dp-block {
+      display: block;
+    }
+    &--month.dp-block {
+      display: block;
+    }
+    &--year.dp-block {
+      display: block;
+    }
+    &--empty.dp-block {
+      display: block;
+    }
+  }
+}
 .submit-btn {
   width: 96px;
   height: 96px;
