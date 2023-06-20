@@ -9,53 +9,6 @@ submitBtn.addEventListener("click", () => {
   const errorYearText = document.querySelector(".error-text--year"); //year 에러 메세지
 
   /**
-   * Day 입력값 유효성 검사
-   */
-  const monthLastDay = new Date(inputYear.value, inputMonth.value, 0).getDate(); // 월의 마지막 날짜
-
-  // 값이 비어있을 경우
-  if (!inputDay.value) {
-    inputDay.parentElement.classList.add("error-form");
-    inputDay.nextElementSibling.classList.add("dp-block");
-    errorDayText.classList.remove("dp-block");
-  } else if (
-    // day가 1~31 사이의 숫자가 아닌 경우
-    (inputDay.value && (1 > inputDay.value || inputDay.value > 31)) ||
-    // 해당 월에 해당하지 않는 day를 입력할 경우
-    monthLastDay < inputDay.value
-  ) {
-    inputDay.parentElement.classList.add("error-form");
-    inputDay.nextElementSibling.classList.remove("dp-block");
-    errorDayText.classList.add("dp-block");
-  } else {
-    inputDay.parentElement.classList.remove("error-form");
-    inputDay.nextElementSibling.classList.remove("dp-block");
-    errorDayText.classList.remove("dp-block");
-  }
-
-  /**
-   * Month 입력값 유효성 검사
-   */
-  // 값이 비어있을 경우
-  if (!inputMonth.value) {
-    inputMonth.parentElement.classList.add("error-form");
-    inputMonth.nextElementSibling.classList.add("dp-block");
-    errorMonthText.classList.remove("dp-block");
-  } else if (
-    inputMonth.value &&
-    // month가 1~12 사이의 숫자가 아닌 경우
-    (1 > inputMonth.value || inputMonth.value > 12)
-  ) {
-    inputMonth.parentElement.classList.add("error-form");
-    inputMonth.nextElementSibling.classList.remove("dp-block");
-    errorMonthText.classList.add("dp-block");
-  } else {
-    inputMonth.parentElement.classList.remove("error-form");
-    inputMonth.nextElementSibling.classList.remove("dp-block");
-    errorMonthText.classList.remove("dp-block");
-  }
-
-  /**
    * Year 입력값 유효성 검사
    */
   const crrYear = new Date().getFullYear();
@@ -76,6 +29,57 @@ submitBtn.addEventListener("click", () => {
     inputYear.parentElement.classList.remove("error-form");
     inputYear.nextElementSibling.classList.remove("dp-block");
     errorYearText.classList.remove("dp-block");
+  }
+
+  /**
+   * Month 입력값 유효성 검사
+   */
+  // 값이 비어있을 경우
+  if (!inputMonth.value) {
+    inputMonth.parentElement.classList.add("error-form");
+    inputMonth.nextElementSibling.classList.add("dp-block");
+    errorMonthText.classList.remove("dp-block");
+  } else if (
+    (inputMonth.value &&
+      // month가 1~12 사이의 숫자가 아닌 경우
+      (1 > inputMonth.value || inputMonth.value > 12)) ||
+    // 숫자가 아닌 값을 입력했을 경우
+    isNaN(Number(inputMonth.value))
+  ) {
+    inputMonth.parentElement.classList.add("error-form");
+    inputMonth.nextElementSibling.classList.remove("dp-block");
+    errorMonthText.classList.add("dp-block");
+  } else {
+    inputMonth.parentElement.classList.remove("error-form");
+    inputMonth.nextElementSibling.classList.remove("dp-block");
+    errorMonthText.classList.remove("dp-block");
+  }
+
+  /**
+   * Day 입력값 유효성 검사
+   */
+  const monthLastDay = new Date(inputYear.value, inputMonth.value, 0).getDate(); // 월의 마지막 날짜
+
+  // 값이 비어있을 경우
+  if (!inputDay.value) {
+    inputDay.parentElement.classList.add("error-form");
+    inputDay.nextElementSibling.classList.add("dp-block");
+    errorDayText.classList.remove("dp-block");
+  } else if (
+    // day가 1~31 사이의 숫자가 아닌 경우
+    (inputDay.value && (1 > inputDay.value || inputDay.value > 31)) ||
+    // 해당 월에 해당하지 않는 day를 입력할 경우
+    monthLastDay < inputDay.value ||
+    // 숫자가 아닌 값을 입력했을 경우
+    isNaN(Number(inputDay.value))
+  ) {
+    inputDay.parentElement.classList.add("error-form");
+    inputDay.nextElementSibling.classList.remove("dp-block");
+    errorDayText.classList.add("dp-block");
+  } else {
+    inputDay.parentElement.classList.remove("error-form");
+    inputDay.nextElementSibling.classList.remove("dp-block");
+    errorDayText.classList.remove("dp-block");
   }
 
   /**
@@ -102,7 +106,23 @@ submitBtn.addEventListener("click", () => {
   const ageYearText = document.querySelector(".result__date--year");
   const ageMonthText = document.querySelector(".result__date--month");
   const ageDayText = document.querySelector(".result__date--day");
-  ageYearText.textContent = ageYear;
-  ageMonthText.textContent = ageMonth;
-  ageDayText.textContent = ageDay;
+
+  // 에러 갯수
+  const errorCount = document.querySelectorAll(".form-wrap .error-form");
+
+  // NaN, 에러 예외처리
+  if (
+    !isNaN(ageYear) &&
+    !isNaN(ageMonth) &&
+    !isNaN(ageDay) &&
+    errorCount.length === 0
+  ) {
+    ageYearText.textContent = ageYear;
+    ageMonthText.textContent = ageMonth;
+    ageDayText.textContent = ageDay;
+  } else {
+    ageYearText.textContent = "- -";
+    ageMonthText.textContent = "- -";
+    ageDayText.textContent = "- -";
+  }
 });
