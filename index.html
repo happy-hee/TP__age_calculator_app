@@ -20,19 +20,19 @@
       <div class="content">
         <!-- 입력폼 -->
         <div class="form-wrap">
-          <!-- Day -->
+          <!-- Year -->
           <div class="form">
-            <label class="age-label" for="day">DAY</label>
+            <label class="age-label" for="year">YEAR</label>
             <input
               class="age-input"
               type="text"
-              id="day"
-              placeholder="DD"
-              maxlength="2" />
+              id="year"
+              placeholder="YYYY"
+              maxlength="4" />
             <div class="error-text error-text--empty">
               This field is required
             </div>
-            <div class="error-text error-text--day">Must be a valid day</div>
+            <div class="error-text error-text--year">Must be in the past</div>
           </div>
           <!-- Month -->
           <div class="form">
@@ -50,20 +50,21 @@
               Must be a valid month
             </div>
           </div>
-          <!-- Year -->
+          <!-- Day -->
           <div class="form">
-            <label class="age-label" for="year">YEAR</label>
+            <label class="age-label" for="day">DAY</label>
             <input
               class="age-input"
               type="text"
-              id="year"
-              placeholder="YYYY"
-              maxlength="4" />
+              id="day"
+              placeholder="DD"
+              maxlength="2" />
             <div class="error-text error-text--empty">
               This field is required
             </div>
-            <div class="error-text error-text--year">Must be in the past</div>
+            <div class="error-text error-text--day">Must be a valid day</div>
           </div>
+
           <button class="submit-btn" id="submitBtn">
             <img src="./assets/images/icon-arrow.svg" alt="확인하기" />
           </button>
@@ -71,13 +72,13 @@
         <!-- 결과 -->
         <div class="result">
           <div class="result__year">
-            <span class="result__date">- -</span>years
+            <span class="result__date result__date--year">- -</span>years
           </div>
           <div class="result__month">
-            <span class="result__date">- -</span>months
+            <span class="result__date result__date--month">- -</span>months
           </div>
           <div class="result__days">
-            <span class="result__date">- -</span>days
+            <span class="result__date result__date--day">- -</span>days
           </div>
         </div>
       </div>

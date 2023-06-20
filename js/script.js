@@ -1,17 +1,17 @@
 const submitBtn = document.querySelector("#submitBtn");
 
 submitBtn.addEventListener("click", () => {
-  let inputDay = document.querySelector("#day");
-  let errorDayText = document.querySelector(".error-text--day"); //day 에러 메세지
-  let inputMonth = document.querySelector("#month");
-  let errorMonthText = document.querySelector(".error-text--month"); //month 에러 메세지
-  let inputYear = document.querySelector("#year");
-  let errorYearText = document.querySelector(".error-text--year"); //year 에러 메세지
+  const inputDay = document.querySelector("#day");
+  const errorDayText = document.querySelector(".error-text--day"); //day 에러 메세지
+  const inputMonth = document.querySelector("#month");
+  const errorMonthText = document.querySelector(".error-text--month"); //month 에러 메세지
+  const inputYear = document.querySelector("#year");
+  const errorYearText = document.querySelector(".error-text--year"); //year 에러 메세지
 
   /**
    * Day 입력값 유효성 검사
    */
-  let monthLastDay = new Date(inputYear.value, inputMonth.value, 0).getDate(); // 월의 마지막 날짜
+  const monthLastDay = new Date(inputYear.value, inputMonth.value, 0).getDate(); // 월의 마지막 날짜
 
   // 값이 비어있을 경우
   if (!inputDay.value) {
@@ -58,7 +58,7 @@ submitBtn.addEventListener("click", () => {
   /**
    * Year 입력값 유효성 검사
    */
-  let crrYear = new Date().getFullYear();
+  const crrYear = new Date().getFullYear();
   // 값이 비어있을 경우
   if (!inputYear.value) {
     inputYear.parentElement.classList.add("error-form");
@@ -77,4 +77,32 @@ submitBtn.addEventListener("click", () => {
     inputYear.nextElementSibling.classList.remove("dp-block");
     errorYearText.classList.remove("dp-block");
   }
+
+  /**
+   * 나이 계산
+   */
+  const inputYearValue = inputYear.value;
+  const inputMonthValue = inputMonth.value;
+  const inputDayValue = inputDay.value;
+
+  // 나이 날짜 (month의 경우 0부터 11까지의 숫자로 표현하기 때문에 - 1을 해줌)
+  const ageDate = new Date(inputYearValue, inputMonthValue - 1, inputDayValue);
+  // 현재 날짜
+  const crrDate = new Date();
+
+  // 현재 날짜와 나이 날짜의 시간 차이 계산
+  const timeDiff = Math.abs(crrDate.getTime() - ageDate.getTime());
+  // 일 수 차이 기반 새로운 Date 생성
+  const diffDate = new Date(timeDiff);
+  const ageYear = diffDate.getFullYear() - 1970;
+  const ageMonth = diffDate.getMonth();
+  const ageDay = diffDate.getDate() - 1;
+
+  // 나이 출력
+  const ageYearText = document.querySelector(".result__date--year");
+  const ageMonthText = document.querySelector(".result__date--month");
+  const ageDayText = document.querySelector(".result__date--day");
+  ageYearText.textContent = ageYear;
+  ageMonthText.textContent = ageMonth;
+  ageDayText.textContent = ageDay;
 });
